@@ -25,6 +25,8 @@ The following data will be returned based on the user's selections:
 
 Once the above data is returned users will be able to view the complete row data 5 rows at a time. To view this data enter "y" when prompted. To quit the program enter "no" at the "Would you like to restart?" prompt.
 
+Additional validation and error checking was added to prevent issues with missing data in certain .csv files. 
+
 ### Files used
 This project uses the following files:
     bikeshare_Oribello.py
