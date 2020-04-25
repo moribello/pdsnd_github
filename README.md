@@ -11,6 +11,16 @@ This project analyzes bike share data from three major cities
     - Chicago
     - New York City
 
+The user will be prompted to select a city, a month to filter by (or "all" to skip filtering by month), and a day of the week to filter by (or "all" to skip filtering by day of week).
+
+The following data will be returned based on the user's selections:
+    - Most popular month for rentals
+    - Most popular day of week for rentals
+    - Most common hour of day for rentals
+    - Most popular start, end, and combination of stations
+    - Total and average trip durations
+    - User types, gender, and birth year
+
 ### Files used
 This project uses the following files:
     bikeshare_Oribello.py
@@ -19,4 +29,4 @@ This project uses the following files:
     washington.csv
 
 ### Credits
-Thanks to the Udacity team for initial technical knowledge and geeksforgeeks.com for additional information on material used in the validation areas. 
+Thanks to the Udacity team for initial technical knowledge and geeksforgeeks.com for additional information on material used in the validation areas.
