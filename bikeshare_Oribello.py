@@ -97,7 +97,6 @@ def load_data(city, month, day):
         # filter by day of week to create the new dataframe
         df = df[df['day_of_week'] == day.title()]
 
-
     return df
 
 
@@ -108,13 +107,13 @@ def time_stats(df):
     start_time = time.time()
 
     # displays the most common month.
-    # NOTE: If a user chose to filter by a single month only that month's data will be available; this loop checks and, if the user has filtered by a single month, will remind them of this.
+
     mc_month = df['month'].mode()[0]
     print(mc_month)
     print("The most popular month to rent a bicycle is", cal.month_name[mc_month])
 
     # displays the most common day of week
-    # NOTE: If a user chose to filter by a single month only that month's data will be available; this loop checks and, if the user has filtered by a single month, will remind them of this.
+
     mc_day = df['day_of_week'].mode()[0]
     print("The most popular day of the week to rent a bicycle is", mc_day)
 
@@ -185,6 +184,7 @@ def user_stats(df):
     print('\nCalculating User Stats...\n')
     start_time = time.time()
 
+#The following uses a try / except loop to prevent errors when reading from data with missing demographic information.
     try:
         # Display counts of user types
         user_types = df['User Type'].value_counts()
