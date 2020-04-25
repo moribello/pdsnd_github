@@ -1,15 +1,22 @@
 ### Date created
-Include the date you created this project and README file.
+Project created April 13th, 2020
+READEME file created April 23, 2020
 
 ### Project Title
-Replace the Project Title
+Bikeshare Data Analysis tool
 
 ### Description
-Describe what your project is about and what it does
+This project analyzes bike share data from three major cities
+    - Washington DC
+    - Chicago
+    - New York City
 
 ### Files used
-Include the files used
+This project uses the following files:
+    bikeshare_Oribello.py
+    chicago.csv
+    new_york_city.csv
+    washington.csv
 
 ### Credits
-It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
-
+Thanks to the Udacity team for initial technical knowledge and geeksforgeeks.com for additional information on material used in the validation areas. 
