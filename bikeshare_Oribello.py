@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import calendar as cal
+import matplotlib.pyplot as plt
 import time
 
 CITY_DATA = { 'chicago': 'chicago.csv',
@@ -194,7 +195,7 @@ def user_stats(df):
         # Display counts of gender
         gender = df['Gender'].value_counts()
         print("The following are counts for gender: \n")
-        print(user_types)
+        print(gender)
 
         # Display earliest, most recent, and most common year of birth
         earliest_by = int(df['Birth Year'].min())
@@ -210,6 +211,42 @@ def user_stats(df):
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
+def graph_user_data(df):
+    try:
+        show_usertypes = input("Would you like to see a graph of user type data for this city? ").lower()
+        if show_usertypes == "y" or show_usertypes == "yes":
+            ut_values = df['User Type'].value_counts().to_list()
+            ut_labels = df['User Type'].unique()
+            bar_colors = ['pink', 'yellowgreen', 'blue']
+            y_pos = np.arange(len(ut_labels))
+# Create bars and labels
+            plt.bar(ut_labels, ut_values, color=bar_colors)
+            plt.xticks(y_pos, ut_labels)
+            plt.xlabel('User by Type')
+            plt.ion()
+            plt.show()
+# Prompts for user to press enter to continue
+            plt.pause(0.001)
+            input("\n Press \'Enter\' to continue \n")
+        else:
+            print("Ok. \n")
+
+        display = input("Would you like to see a graph of user gender data for this city? ").lower()
+        if display == "y" or display == "yes":
+            genders = df['Gender'].value_counts().to_list()
+            labels = ('Male', 'Female')
+            colors = ['blue', 'yellowgreen']
+            fig1, ax1 = plt.subplots()
+            ax1.pie(genders, labels=labels, colors=colors, autopct='%1.1f%%', shadow=False, startangle=90)
+            ax1.axis('equal')
+            plt.ion()
+            plt.show()
+            plt.pause(0.001)
+            input("Press \'Enter\' to continue")
+        else:
+            print("Ok. \n")
+    except:
+        print("There doesn't appear to be any data to graph")
 
 def show_rawdata(df):
     count = 0
@@ -232,6 +269,7 @@ def main():
         station_stats(df)
         trip_duration_stats(df)
         user_stats(df)
+        graph_user_data(df)
         show_rawdata(df)
 
         restart = input('\nWould you like to restart? Enter yes or no.\n')
