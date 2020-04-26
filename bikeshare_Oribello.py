@@ -212,18 +212,41 @@ def user_stats(df):
     print('-'*40)
 
 def graph_user_data(df):
-        display = input("Would you like to see a graph of user gender data for this city?").lower()
+    try:
+        show_usertypes = input("Would you like to see a graph of user type data for this city? ").lower()
+        if show_usertypes == "y" or show_usertypes == "yes":
+            ut_values = df['User Type'].value_counts().to_list()
+            ut_labels = df['User Type'].unique()
+            bar_colors = ['pink', 'yellowgreen', 'blue']
+            y_pos = np.arange(len(ut_labels))
+# Create bars and labels
+            plt.bar(ut_labels, ut_values, color=bar_colors)
+            plt.xticks(y_pos, ut_labels)
+            plt.xlabel('User by Type')
+            plt.ion()
+            plt.show()
+# Prompts for user to press enter to continue
+            plt.pause(0.001)
+            input("\n Press \'Enter\' to continue \n")
+        else:
+            print("Ok. \n")
+
+        display = input("Would you like to see a graph of user gender data for this city? ").lower()
         if display == "y" or display == "yes":
-            print("Please close the graph window to continue.")
             genders = df['Gender'].value_counts().to_list()
             labels = ('Male', 'Female')
+            colors = ['blue', 'yellowgreen']
             fig1, ax1 = plt.subplots()
-            ax1.pie(genders, labels=labels, autopct='%1.1f%%',
-            shadow=True, startangle=90)
-            ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+            ax1.pie(genders, labels=labels, colors=colors, autopct='%1.1f%%', shadow=False, startangle=90)
+            ax1.axis('equal')
+            plt.ion()
             plt.show()
+            plt.pause(0.001)
+            input("Press \'Enter\' to continue")
         else:
-            print("You have chosen not to view a graph of user gender data.")
+            print("Ok. \n")
+    except:
+        print("There doesn't appear to be any data to graph")
 
 def show_rawdata(df):
     count = 0
