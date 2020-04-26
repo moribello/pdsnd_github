@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import calendar as cal
+import matplotlib.pyplot as plt
 import time
 
 CITY_DATA = { 'chicago': 'chicago.csv',
@@ -194,7 +195,7 @@ def user_stats(df):
         # Display counts of gender
         gender = df['Gender'].value_counts()
         print("The following are counts for gender: \n")
-        print(user_types)
+        print(gender)
 
         # Display earliest, most recent, and most common year of birth
         earliest_by = int(df['Birth Year'].min())
@@ -210,6 +211,19 @@ def user_stats(df):
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
+def graph_user_data(df):
+        display = input("Would you like to see a graph of user gender data for this city?").lower()
+        if display == "y" or display == "yes":
+            print("Please close the graph window to continue.")
+            genders = df['Gender'].value_counts().to_list()
+            labels = ('Male', 'Female')
+            fig1, ax1 = plt.subplots()
+            ax1.pie(genders, labels=labels, autopct='%1.1f%%',
+            shadow=True, startangle=90)
+            ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+            plt.show()
+        else:
+            print("You have chosen not to view a graph of user gender data.")
 
 def show_rawdata(df):
     count = 0
@@ -232,6 +246,7 @@ def main():
         station_stats(df)
         trip_duration_stats(df)
         user_stats(df)
+        graph_user_data(df)
         show_rawdata(df)
 
         restart = input('\nWould you like to restart? Enter yes or no.\n')
