@@ -9,6 +9,7 @@ Pre-requisites:
 - Python 3
 - NumbPy library
 - Pandas library
+- Matplotlib
 
 Description:
 ------------
